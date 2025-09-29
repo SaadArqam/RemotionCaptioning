@@ -1,36 +1,27 @@
-import { Composition } from "remotion";
-import { HelloWorld } from "./HelloWorld";
-import { Logo } from "./HelloWorld/Logo";
+// src/Root.jsx
+import React from "react";
+import { Composition, staticFile } from "remotion";
+import { CaptionComposition } from "./CaptionComposition";
 
-// Each <Composition> is an entry in the sidebar!
-
-export const RemotionRoot = () => {
+export const RemotionVideo = () => {
   return (
     <>
       <Composition
-        // You can take the "id" to render a video:
-        // npx remotion render HelloWorld
-        id="HelloWorld"
-        component={HelloWorld}
-        durationInFrames={150}
+        id="CaptionDemo"
+        component={CaptionComposition}
+        durationInFrames={30 * 10} // 10 sec @ 30fps
         fps={30}
-        width={1920}
-        height={1080}
-        // You can override these props for each render:
-        // https://www.remotion.dev/docs/parametrized-rendering
+        width={1280}
+        height={720}
         defaultProps={{
-          titleText: "Welcome to Remotion",
-          titleColor: "black",
+          // ✅ staticFile tells Remotion to look in /public
+          videoSrc: staticFile("sample.mp4"),
+          captions: [
+            { start: 0, end: 2, text: "Hello World!" },
+            { start: 2, end: 4, text: "This is auto-captioning demo." },
+          ],
+          stylePreset: "bottom",
         }}
-      />
-      {/* Mount any React component to make it show up in the sidebar and work on it individually! */}
-      <Composition
-        id="OnlyLogo"
-        component={Logo}
-        durationInFrames={150}
-        fps={30}
-        width={1920}
-        height={1080}
       />
     </>
   );

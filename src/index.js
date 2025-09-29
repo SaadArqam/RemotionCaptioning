@@ -1,7 +1,5 @@
-// This is your entry file! Refer to it when you render:
-// npx remotion render <entry-file> HelloWorld out/video.mp4
-
+// src/index.js
 import { registerRoot } from "remotion";
-import { RemotionRoot } from "./Root";
+import { RemotionVideo } from "./Root";
 
-registerRoot(RemotionRoot);
+registerRoot(RemotionVideo);

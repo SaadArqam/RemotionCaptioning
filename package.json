@@ -7,6 +7,13 @@
   "private": true,
   "dependencies": {
     "@remotion/cli": "4.0.354",
+    "@remotion/player": "^4.0.354",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "fluent-ffmpeg": "^2.1.3",
+    "multer": "^2.0.2",
+    "openai": "^5.23.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "remotion": "4.0.354",
@@ -14,12 +21,16 @@
   },
   "devDependencies": {
     "@remotion/eslint-config-flat": "4.0.354",
-    "prettier": "3.6.0",
-    "eslint": "9.19.0"
+    "concurrently": "^9.2.1",
+    "eslint": "9.19.0",
+    "prettier": "3.6.0"
   },
   "scripts": {
-    "dev": "remotion studio",
-    "build": "remotion bundle",
+    "start": "remotion preview --port=3000",
+  "server": "node server/server.js",
+  "dev": "concurrently \"npm run server\" \"npm run start\"",
+    "build": "remotion build",
+    "render": "remotion render",
     "upgrade": "remotion upgrade",
     "lint": "eslint src"
   }
